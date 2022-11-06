@@ -6,7 +6,7 @@ GET:candles
 \
 curl \
 -X GET \
--o file.txt \
+-o site.html \
 -b cookie.txt \
 -D headers.txt \
 -d '"param1=test1&param2=test2"' \
@@ -20,7 +20,7 @@ POST:candles/filldb
 \
 curl \
 -X POST \
--o file.txt \
+-o site.html \
 -b cookie.txt \
 -D headers.txt \
 -d '"param1=test1&param2=test2"' \

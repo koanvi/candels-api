@@ -4,12 +4,11 @@ import { Server } from "./modules/server";
 
 (async () => {
   try {
-
+    
+    //init Sequelize
     let sequelize = Sequelize;
-
-    console.log(`I am started 🚀🚀🚀`);
-    console.log(`at directory: ${__dirname}`);
-
+    
+    console.log(`I was started 🚀🚀🚀 at directory: ${__dirname}`);
     new Server();
 
   } catch (error: any) {

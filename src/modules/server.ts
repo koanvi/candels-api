@@ -12,7 +12,7 @@ export class Server {
     dotenv.config();
 
     const app: Express = express();
-    const port = process.env.PORT;
+    const port = process.env.PORT || "1234";
 
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
@@ -21,12 +21,12 @@ export class Server {
      * Setting headers
      */
     app.use((req, res, next) => {
-      res.header('x-powered-by', 'koanvi')
-      res.header('Access-Control-Allow-Origin', process.env.ALLOW_ORIGIN)
-      res.header('Access-Control-Allow-Methods', 'GET,POST')
-      res.header('Access-Control-Allow-Headers', 'Content-Type')
+      res.header('x-powered-by', 'koanvi');
+      res.header('Access-Control-Allow-Origin', process.env.ALLOW_ORIGIN || "*");
+      res.header('Access-Control-Allow-Methods', 'GET,POST');
+      res.header('Access-Control-Allow-Headers', 'Content-Type');
 
-      next()
+      next();
     })
 
     app.get('/candles', async (req: Request, res: Response) => {
