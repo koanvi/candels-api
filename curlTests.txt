@@ -1,0 +1,29 @@
+cd ~/downloads
+
+===============
+GET:candles
+===============
+\
+curl \
+-X GET \
+-o file.txt \
+-b cookie.txt \
+-D headers.txt \
+-d '"param1=test1&param2=test2"' \
+"http://localhost:1234/candles/?startDt=2021-01-01&endDt=2023-01-01"
+
+===============
+
+===============
+POST:candles/filldb
+===============
+\
+curl \
+-X POST \
+-o file.txt \
+-b cookie.txt \
+-D headers.txt \
+-d '"param1=test1&param2=test2"' \
+"http://localhost:1234/candles/filldb"
+
+===============
