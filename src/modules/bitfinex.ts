@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { Candle } from './../models/bitfinex/Candle';
+import "dotenv-defaults/config";
 
 export class Bitfinex {
 
-  baseUrl: string = "https://api-pub.bitfinex.com/v2/";
-  pathParams: string = "candles/trade:1D:tBTCUSD/hist";
-  queryParams: string = `start=${Date.parse('2021-01-01').toString()}&${Date.parse('2022-01-01').toString()}`;
+  baseUrl: string = <string>process.env.BITFINEX_BASEURL;
+  pathParams: string = <string>process.env.BITFINEX_PATHPARAMS;
+  queryParams: string = `start=${Date.parse('2021-01-01').toString()}&end=${Date.parse('2022-01-01').toString()}`;
 
   constructor() { }
   

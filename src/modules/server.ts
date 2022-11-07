@@ -1,5 +1,4 @@
 import express, { Express, Request, Response } from 'express';
-import * as dotenv from 'dotenv';
 import { Candle as CandleController } from "./../controllers/Candle";
 
 export class Server {
@@ -9,10 +8,8 @@ export class Server {
     //req.body
     //req.params
 
-    dotenv.config();
-
     const app: Express = express();
-    const port = process.env.PORT || "1234";
+    const port = process.env.PORT;
 
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
@@ -22,12 +19,12 @@ export class Server {
      */
     app.use((req, res, next) => {
       res.header('x-powered-by', 'koanvi');
-      res.header('Access-Control-Allow-Origin', process.env.ALLOW_ORIGIN || "*");
+      res.header('Access-Control-Allow-Origin', process.env.ALLOW_ORIGIN);
       res.header('Access-Control-Allow-Methods', 'GET,POST');
       res.header('Access-Control-Allow-Headers', 'Content-Type');
 
       next();
-    })
+    });
 
     app.get('/candles', async (req: Request, res: Response) => {
       try {
@@ -58,7 +55,7 @@ export class Server {
     app.post('/candles/filldb', async (req: Request, res: Response) => {
       try {
         await CandleController.fillDB();
-        res.json({status:"ok"});
+        res.json({ status: "ok" });
       } catch (error) {
         console.error(error);
         res.status(418).json(error);

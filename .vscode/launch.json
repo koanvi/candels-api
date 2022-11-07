@@ -12,6 +12,7 @@
       ],
       "env": {
         "NODE_PATH": "${workspaceFolder}/src",
+        // "PORT": "321",
         // "config": "${workspaceFolder}/config/local.js",
       },
       "args": [
